@@ -1,4 +1,4 @@
-import { Search, Bell, User, Menu } from "lucide-react";
+import { Search, Bell, User, Menu, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -11,14 +11,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { useTheme } from "@/hooks/use-theme";
 
 export function TopNavbar() {
+  const { setTheme, theme } = useTheme()
+
   return (
     <header className="h-16 border-b border-border bg-surface flex items-center justify-between px-6">
       {/* Left Section */}
       <div className="flex items-center space-x-4">
         <SidebarTrigger />
-        
+
         {/* Search Bar */}
         <div className="relative max-w-md w-64 hidden md:block">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -36,6 +39,31 @@ export function TopNavbar() {
           <Search className="w-4 h-4" />
         </Button>
 
+        {/* Theme Toggle */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="sm">
+              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="bg-surface">
+            <DropdownMenuItem onClick={() => setTheme("light")}>
+              <Sun className="mr-2 h-4 w-4" />
+              <span>Light</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("dark")}>
+              <Moon className="mr-2 h-4 w-4" />
+              <span>Dark</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme("system")}>
+              <span className="mr-2 h-4 w-4">🖥️</span>
+              <span>System</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         {/* Notifications */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -44,7 +72,7 @@ export function TopNavbar() {
               <Badge className="absolute -top-1 -right-1 w-2 h-2 p-0 bg-destructive border-2 border-surface" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-80">
+          <DropdownMenuContent align="end" className="w-80 bg-surface">
             <div className="p-4 border-b border-border-muted">
               <h3 className="font-medium">Notifications</h3>
               <p className="text-sm text-muted-foreground">You have 3 new notifications</p>
@@ -82,7 +110,7 @@ export function TopNavbar() {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuContent align="end" className="w-56 bg-surface">
             <div className="flex items-center justify-start gap-2 p-2">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="" alt="User" />
