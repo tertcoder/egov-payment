@@ -119,7 +119,7 @@ export function TopNavbar() {
                 </AvatarFallback>
               </Avatar>
               <div className="flex flex-col space-y-1 leading-none">
-                <p className="font-medium text-sm">John Doe</p>
+                <p className="font-medium text-sm">Bon Tertius Tuyishimire</p>
                 <p className="w-[200px] truncate text-xs text-muted-foreground">
                   admin@egov-payment.gov
                 </p>

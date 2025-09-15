@@ -62,11 +62,11 @@ const Settings = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" defaultValue="John" />
+                    <Input id="firstName" defaultValue="Bon Tertius" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" defaultValue="Doe" />
+                    <Input id="lastName" defaultValue="Tuyishimire" />
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -75,7 +75,7 @@ const Settings = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" defaultValue="+251-11-123-4567" />
+                  <Input id="phone" defaultValue="+257 65 849 761" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="department">Department</Label>
@@ -87,7 +87,7 @@ const Settings = () => {
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-surface">
                       <SelectItem value="admin">System Administrator</SelectItem>
                       <SelectItem value="manager">Payment Manager</SelectItem>
                       <SelectItem value="operator">System Operator</SelectItem>
@@ -115,7 +115,7 @@ const Settings = () => {
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-surface">
                       <SelectItem value="eat">East Africa Time (EAT)</SelectItem>
                       <SelectItem value="utc">UTC</SelectItem>
                       <SelectItem value="est">Eastern Standard Time</SelectItem>
@@ -128,21 +128,21 @@ const Settings = () => {
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-surface">
                       <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="am">Amharic</SelectItem>
-                      <SelectItem value="om">Oromo</SelectItem>
+                      <SelectItem value="fr">French</SelectItem>
+                      <SelectItem value="ki">Kirundi</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="currency">Default Currency</Label>
-                  <Select defaultValue="etb">
+                  <Select defaultValue="bif">
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="etb">Ethiopian Birr (ETB)</SelectItem>
+                    <SelectContent className="bg-surface">
+                      <SelectItem value="bif">Burundian Francs (BIF)</SelectItem>
                       <SelectItem value="usd">US Dollar (USD)</SelectItem>
                       <SelectItem value="eur">Euro (EUR)</SelectItem>
                     </SelectContent>
@@ -154,7 +154,7 @@ const Settings = () => {
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-surface">
                       <SelectItem value="10">10</SelectItem>
                       <SelectItem value="20">20</SelectItem>
                       <SelectItem value="50">50</SelectItem>
@@ -240,7 +240,7 @@ const Settings = () => {
                     </div>
                     <div className="w-2 h-2 bg-secondary rounded-full"></div>
                   </div>
-                  
+
                   <div className="flex items-center justify-between p-3 bg-surface-muted rounded-lg border border-border-muted">
                     <div>
                       <p className="text-sm font-medium text-foreground">Mobile Session</p>
@@ -260,7 +260,7 @@ const Settings = () => {
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-surface">
                       <SelectItem value="15">15 minutes</SelectItem>
                       <SelectItem value="30">30 minutes</SelectItem>
                       <SelectItem value="60">1 hour</SelectItem>
@@ -335,7 +335,7 @@ const Settings = () => {
 
               <div className="space-y-4">
                 <h4 className="text-sm font-medium text-foreground">Notification Types</h4>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <input type="checkbox" id="transaction-alerts" defaultChecked className="rounded" />
@@ -386,7 +386,7 @@ const Settings = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="organizationName">Organization</Label>
-                    <Input id="organizationName" defaultValue="Government of Ethiopia" />
+                    <Input id="organizationName" defaultValue="Government of Burundi" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="supportEmail">Support Email</Label>
@@ -416,7 +416,7 @@ const Settings = () => {
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-surface">
                         <SelectItem value="00:00">12:00 AM</SelectItem>
                         <SelectItem value="02:00">2:00 AM</SelectItem>
                         <SelectItem value="04:00">4:00 AM</SelectItem>
@@ -505,7 +505,7 @@ const Settings = () => {
 
               <div className="space-y-4">
                 <h4 className="text-sm font-medium text-foreground">API Keys</h4>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center justify-between p-3 bg-surface-muted rounded-lg border border-border-muted">
                     <div>
@@ -516,7 +516,7 @@ const Settings = () => {
                       Regenerate
                     </Button>
                   </div>
-                  
+
                   <div className="flex items-center justify-between p-3 bg-surface-muted rounded-lg border border-border-muted">
                     <div>
                       <p className="text-sm font-medium text-foreground">Test Key</p>
@@ -538,7 +538,7 @@ const Settings = () => {
 
               <div className="space-y-4">
                 <h4 className="text-sm font-medium text-foreground">Rate Limiting</h4>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="rateLimit">Requests per minute</Label>
@@ -546,7 +546,7 @@ const Settings = () => {
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-surface">
                         <SelectItem value="100">100</SelectItem>
                         <SelectItem value="500">500</SelectItem>
                         <SelectItem value="1000">1000</SelectItem>
@@ -560,7 +560,7 @@ const Settings = () => {
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-surface">
                         <SelectItem value="10">10</SelectItem>
                         <SelectItem value="30">30</SelectItem>
                         <SelectItem value="60">60</SelectItem>

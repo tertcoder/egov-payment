@@ -42,7 +42,7 @@ const Dashboard = () => {
   const recentTransactions = [
     {
       id: "TXN-001",
-      bank: "Bank of Ethiopia",
+      bank: "Bank of the Republic of Burundi",
       platform: "Ministry of Finance",
       amount: 2450.00,
       status: "pending",
@@ -50,7 +50,7 @@ const Dashboard = () => {
     },
     {
       id: "TXN-002",
-      bank: "Commercial Bank",
+      bank: "Banque Commerciale du Burundi",
       platform: "Education Portal",
       amount: 1200.00,
       status: "completed",
@@ -58,15 +58,15 @@ const Dashboard = () => {
     },
     {
       id: "TXN-003",
-      bank: "Dashen Bank",
-      platform: "Health Department",
+      bank: "Ecobank Burundi",
+      platform: "Ministry of Health",
       amount: 3200.00,
       status: "completed",
       date: "6 hours ago",
     },
     {
       id: "TXN-004",
-      bank: "Awash Bank",
+      bank: "CRDB Bank Burundi",
       platform: "Tax Authority",
       amount: 850.00,
       status: "failed",
@@ -192,7 +192,7 @@ const Dashboard = () => {
                 </div>
                 <Badge className="badge-success">Online</Badge>
               </div>
-              
+
               <div className="flex items-center justify-between p-3 rounded-lg bg-surface-muted border border-border-muted">
                 <div>
                   <p className="text-sm font-medium text-foreground">Bank Connections</p>
@@ -200,7 +200,7 @@ const Dashboard = () => {
                 </div>
                 <Badge className="badge-warning">Partial</Badge>
               </div>
-              
+
               <div className="flex items-center justify-between p-3 rounded-lg bg-surface-muted border border-border-muted">
                 <div>
                   <p className="text-sm font-medium text-foreground">API Services</p>
@@ -208,7 +208,7 @@ const Dashboard = () => {
                 </div>
                 <Badge className="badge-success">Healthy</Badge>
               </div>
-              
+
               <div className="flex items-center justify-between p-3 rounded-lg bg-surface-muted border border-border-muted">
                 <div>
                   <p className="text-sm font-medium text-foreground">Database</p>

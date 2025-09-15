@@ -18,6 +18,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
+
 const navigation = [
   { name: "Dashboard", href: "/", icon: BarChart3 },
   { name: "Banks", href: "/banks", icon: Building2 },
@@ -61,11 +62,10 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild>
                       <NavLink
                         to={item.href}
-                        className={`flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group relative ${
-                          isActive
-                            ? "bg-primary text-primary-foreground shadow-glow"
-                            : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                        }`}
+                        className={`flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group relative ${isActive
+                          ? "bg-primary text-primary-foreground shadow-glow"
+                          : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                          }`}
                       >
                         <item.icon className={`w-5 h-5 ${isCollapsed ? "" : "mr-3"} transition-colors`} />
                         {!isCollapsed && (

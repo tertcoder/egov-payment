@@ -29,50 +29,50 @@ const Banks = () => {
   const demobanks = [
     {
       id: 1,
-      name: "Bank of Ethiopia",
-      responsiblePerson: "Tekle Wolde",
-      email: "tekle.wolde@boe.gov.et",
-      phone: "+251-11-551-7430",
+      name: "Bank of the Republic of Burundi",
+      responsiblePerson: "Jean-Claude Nduwimana",
+      email: "jc.nduwimana@brb.gov.bi",
+      phone: "+257-22-225-142",
       status: "active",
       connectedSince: "2024-01-15",
       totalTransactions: 1240,
     },
     {
       id: 2,
-      name: "Commercial Bank of Ethiopia",
-      responsiblePerson: "Hanan Ahmed",
-      email: "hanan.ahmed@cbe.com.et",
-      phone: "+251-11-551-5516",
+      name: "Banque Commerciale du Burundi",
+      responsiblePerson: "Marie Nzeyimana",
+      email: "marie.nzeyimana@bcb.bi",
+      phone: "+257-22-226-551",
       status: "active",
       connectedSince: "2024-02-20",
       totalTransactions: 892,
     },
     {
       id: 3,
-      name: "Dashen Bank",
-      responsiblePerson: "Mehari Tesfaye",
-      email: "mehari.tesfaye@dashenbank.com",
-      phone: "+251-11-515-1430",
+      name: "Ecobank Burundi",
+      responsiblePerson: "Pierre Hakizimana",
+      email: "pierre.hakizimana@ecobank.bi",
+      phone: "+257-22-254-430",
       status: "active",
       connectedSince: "2024-01-28",
       totalTransactions: 567,
     },
     {
       id: 4,
-      name: "Awash International Bank",
-      responsiblePerson: "Sara Bekele",
-      email: "sara.bekele@awashbank.com",
-      phone: "+251-11-667-8030",
+      name: "CRDB Bank Burundi",
+      responsiblePerson: "Vestine Uwimana",
+      email: "vestine.uwimana@crdbbank.bi",
+      phone: "+257-22-267-830",
       status: "inactive",
       connectedSince: "2024-03-10",
       totalTransactions: 234,
     },
     {
       id: 5,
-      name: "United Bank S.C.",
-      responsiblePerson: "Daniel Haile",
-      email: "daniel.haile@unitedbank.com.et",
-      phone: "+251-11-554-6565",
+      name: "Interbank Burundi",
+      responsiblePerson: "Emmanuel Bizimana",
+      email: "emmanuel.bizimana@interbank.bi",
+      phone: "+257-22-254-565",
       status: "active",
       connectedSince: "2024-02-14",
       totalTransactions: 456,
@@ -85,7 +85,7 @@ const Banks = () => {
   );
 
   const getStatusBadge = (status: string) => {
-    return status === "active" 
+    return status === "active"
       ? <Badge className="badge-success">Active</Badge>
       : <Badge className="badge-neutral">Inactive</Badge>;
   };
@@ -138,7 +138,7 @@ const Banks = () => {
                 <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
                   Cancel
                 </Button>
-                <Button 
+                <Button
                   className="btn-gradient"
                   onClick={() => setIsDialogOpen(false)}
                 >
@@ -256,7 +256,7 @@ const Banks = () => {
               </TableBody>
             </Table>
           </div>
-          
+
           {filteredBanks.length === 0 && (
             <div className="text-center py-8">
               <Building2 className="w-12 h-12 text-muted-foreground mx-auto mb-4" />

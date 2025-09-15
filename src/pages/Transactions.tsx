@@ -29,7 +29,7 @@ const Transactions = () => {
     {
       id: "TXN-2024-001",
       clientCode: "CLI-001",
-      bank: "Bank of Ethiopia",
+      bank: "Bank of the Republic of Burundi",
       platform: "Ministry of Finance",
       amount: 2450.00,
       date: "2024-03-15T14:30:00",
@@ -40,19 +40,19 @@ const Transactions = () => {
     {
       id: "TXN-2024-002",
       clientCode: "CLI-002",
-      bank: "Commercial Bank",
+      bank: "Banque Commerciale du Burundi",
       platform: "Education Portal",
       amount: 1200.00,
       date: "2024-03-15T12:15:00",
       status: "completed",
       lookupData: "EDU-FEE-2024-001",
-      description: "University tuition fee",
+      description: "University of Burundi tuition fee",
     },
     {
       id: "TXN-2024-003",
       clientCode: "CLI-003",
-      bank: "Dashen Bank",
-      platform: "Health Department",
+      bank: "Ecobank Burundi",
+      platform: "Ministry of Health",
       amount: 3200.00,
       date: "2024-03-15T10:45:00",
       status: "completed",
@@ -62,7 +62,7 @@ const Transactions = () => {
     {
       id: "TXN-2024-004",
       clientCode: "CLI-004",
-      bank: "Awash Bank",
+      bank: "CRDB Bank Burundi",
       platform: "Tax Authority",
       amount: 850.00,
       date: "2024-03-15T09:20:00",
@@ -73,8 +73,8 @@ const Transactions = () => {
     {
       id: "TXN-2024-005",
       clientCode: "CLI-005",
-      bank: "United Bank",
-      platform: "Municipal Services",
+      bank: "Interbank Burundi",
+      platform: "Municipal Services Bujumbura",
       amount: 450.00,
       date: "2024-03-14T16:00:00",
       status: "completed",
@@ -84,18 +84,18 @@ const Transactions = () => {
     {
       id: "TXN-2024-006",
       clientCode: "CLI-006",
-      bank: "Bank of Ethiopia",
+      bank: "Bank of the Republic of Burundi",
       platform: "Education Portal",
       amount: 2100.00,
       date: "2024-03-14T14:15:00",
       status: "pending",
       lookupData: "EDU-FEE-2024-002",
-      description: "Graduate program fee",
+      description: "Technical institute fee",
     },
     {
       id: "TXN-2024-007",
       clientCode: "CLI-007",
-      bank: "Dashen Bank",
+      bank: "Banque de Gestion et de Financement",
       platform: "Ministry of Finance",
       amount: 5200.00,
       date: "2024-03-14T11:30:00",
@@ -106,8 +106,8 @@ const Transactions = () => {
     {
       id: "TXN-2024-008",
       clientCode: "CLI-008",
-      bank: "Commercial Bank",
-      platform: "Health Department",
+      bank: "Banque Commerciale du Burundi",
+      platform: "Ministry of Health",
       amount: 780.00,
       date: "2024-03-14T08:45:00",
       status: "completed",
@@ -117,14 +117,14 @@ const Transactions = () => {
   ];
 
   const filteredTransactions = demoTransactions.filter(transaction => {
-    const matchesSearch = 
+    const matchesSearch =
       transaction.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       transaction.bank.toLowerCase().includes(searchTerm.toLowerCase()) ||
       transaction.platform.toLowerCase().includes(searchTerm.toLowerCase()) ||
       transaction.clientCode.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     const matchesStatus = statusFilter === "all" || transaction.status === statusFilter;
-    
+
     return matchesSearch && matchesStatus;
   });
 
@@ -188,7 +188,7 @@ const Transactions = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card className="card-stats">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -200,7 +200,7 @@ const Transactions = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card className="card-stats">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -216,7 +216,7 @@ const Transactions = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card className="card-stats">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -252,7 +252,7 @@ const Transactions = () => {
                 <Filter className="w-4 h-4 mr-2" />
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-surface">
                 <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="completed">Completed</SelectItem>
                 <SelectItem value="pending">Pending</SelectItem>
@@ -338,7 +338,7 @@ const Transactions = () => {
               </TableBody>
             </Table>
           </div>
-          
+
           {filteredTransactions.length === 0 && (
             <div className="text-center py-8">
               <CreditCard className="w-12 h-12 text-muted-foreground mx-auto mb-4" />

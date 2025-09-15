@@ -23,7 +23,7 @@ const TransactionDetails = () => {
     platformReference: "MOF-TAX-789012",
     processingFee: 24.50,
     netAmount: 2425.50,
-    initiatedBy: "John Doe",
+    initiatedBy: "Bon Tertius Tuyishimire",
     clientDetails: {
       name: "ABC Trading Company",
       email: "finance@abctrading.com",
@@ -143,7 +143,7 @@ const TransactionDetails = () => {
                     <p className="text-foreground">{transaction.initiatedBy}</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground">Date & Time</p>
@@ -293,13 +293,11 @@ const TransactionDetails = () => {
               <div className="space-y-4">
                 {transaction.timeline.map((event, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className={`w-2 h-2 rounded-full mt-2 ${
-                      event.completed ? 'bg-secondary' : 'bg-border-muted'
-                    }`} />
+                    <div className={`w-2 h-2 rounded-full mt-2 ${event.completed ? 'bg-secondary' : 'bg-border-muted'
+                      }`} />
                     <div className="flex-1 space-y-1">
-                      <p className={`text-sm font-medium ${
-                        event.completed ? 'text-foreground' : 'text-muted-foreground'
-                      }`}>
+                      <p className={`text-sm font-medium ${event.completed ? 'text-foreground' : 'text-muted-foreground'
+                        }`}>
                         {event.description}
                       </p>
                       {event.timestamp && (

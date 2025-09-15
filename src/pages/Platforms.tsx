@@ -40,7 +40,7 @@ const Platforms = () => {
       id: 1,
       name: "Ministry of Finance",
       type: "Government",
-      contactEmail: "admin@mof.gov.et",
+      contactEmail: "admin@mof.gov.bi",
       description: "Central government financial services and tax collection platform",
       status: "active",
       createdDate: "2024-01-10",
@@ -51,7 +51,7 @@ const Platforms = () => {
       id: 2,
       name: "Education Portal",
       type: "Government",
-      contactEmail: "support@education.gov.et",
+      contactEmail: "support@education.gov.bi",
       description: "Educational services payment platform for schools and universities",
       status: "active",
       createdDate: "2024-01-25",
@@ -60,9 +60,9 @@ const Platforms = () => {
     },
     {
       id: 3,
-      name: "Health Department",
+      name: "Ministry of Health",
       type: "Government",
-      contactEmail: "payments@health.gov.et",
+      contactEmail: "payments@health.gov.bi",
       description: "Healthcare services and medical fee payment system",
       status: "active",
       createdDate: "2024-02-15",
@@ -71,9 +71,9 @@ const Platforms = () => {
     },
     {
       id: 4,
-      name: "Private Insurance Co.",
+      name: "SOCABU Insurance",
       type: "Private",
-      contactEmail: "billing@insurance.com",
+      contactEmail: "billing@socabu.bi",
       description: "Private insurance premium collection and claims processing",
       status: "inactive",
       createdDate: "2024-03-01",
@@ -82,9 +82,9 @@ const Platforms = () => {
     },
     {
       id: 5,
-      name: "Municipal Services",
+      name: "Bujumbura Municipal Services",
       type: "Government",
-      contactEmail: "payments@municipality.gov.et",
+      contactEmail: "payments@bujumbura.gov.bi",
       description: "Local government services and utility bill payments",
       status: "active",
       createdDate: "2024-02-28",
@@ -99,13 +99,13 @@ const Platforms = () => {
   );
 
   const getStatusBadge = (status: string) => {
-    return status === "active" 
+    return status === "active"
       ? <Badge className="badge-success">Active</Badge>
       : <Badge className="badge-neutral">Inactive</Badge>;
   };
 
   const getTypeBadge = (type: string) => {
-    return type === "Government" 
+    return type === "Government"
       ? <Badge className="bg-primary/10 text-primary border border-primary/20">Government</Badge>
       : <Badge className="bg-purple-100 text-purple-700 border border-purple-200">Private</Badge>;
   };
@@ -148,7 +148,7 @@ const Platforms = () => {
                   <SelectTrigger>
                     <SelectValue placeholder="Select platform type" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-surface">
                     <SelectItem value="government">Government</SelectItem>
                     <SelectItem value="private">Private</SelectItem>
                   </SelectContent>
@@ -160,8 +160,8 @@ const Platforms = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="description">Description</Label>
-                <Textarea 
-                  id="description" 
+                <Textarea
+                  id="description"
                   placeholder="Enter platform description"
                   rows={3}
                 />
@@ -170,7 +170,7 @@ const Platforms = () => {
                 <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
                   Cancel
                 </Button>
-                <Button 
+                <Button
                   className="btn-gradient"
                   onClick={() => setIsDialogOpen(false)}
                 >
@@ -263,8 +263,8 @@ const Platforms = () => {
                       <div className="space-y-2">
                         <div className="flex items-center space-x-2">
                           {getStatusBadge(platform.status)}
-                          <Switch 
-                            checked={platform.status === "active"} 
+                          <Switch
+                            checked={platform.status === "active"}
                           />
                         </div>
                         <p className="text-xs text-muted-foreground">
@@ -297,7 +297,7 @@ const Platforms = () => {
               </TableBody>
             </Table>
           </div>
-          
+
           {filteredPlatforms.length === 0 && (
             <div className="text-center py-8">
               <Globe className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
