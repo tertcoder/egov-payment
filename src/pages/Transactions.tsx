@@ -225,7 +225,7 @@ const Transactions = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Completed</p>
-                <p className="text-2xl font-bold text-secondary">
+                <p className="text-2xl font-bold text-foreground">
                   {demoTransactions.filter(t => t.status === 'completed').length}
                 </p>
               </div>
@@ -239,7 +239,7 @@ const Transactions = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Pending</p>
-                <p className="text-2xl font-bold text-warning">
+                <p className="text-2xl font-bold text-foreground">
                   {demoTransactions.filter(t => t.status === 'pending').length}
                 </p>
               </div>
