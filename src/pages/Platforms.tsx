@@ -114,9 +114,18 @@ const Platforms = () => {
   } = usePagination(filteredPlatforms, 5);
 
   const getStatusBadge = (status: string) => {
-    return status === "active"
-      ? <Badge className="badge-success">Active</Badge>
-      : <Badge className="badge-neutral">Inactive</Badge>;
+    switch (status) {
+      case "active":
+        return <Badge className="bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800">Active</Badge>;
+      case "inactive":
+        return <Badge className="bg-red-100 text-red-800 border border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800">Inactive</Badge>;
+      case "maintenance":
+        return <Badge className="bg-orange-100 text-orange-800 border border-orange-200 dark:bg-orange-900/20 dark:text-orange-300 dark:border-orange-800">Maintenance</Badge>;
+      case "pending":
+        return <Badge className="bg-yellow-100 text-yellow-800 border border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800">Pending</Badge>;
+      default:
+        return <Badge className="bg-gray-100 text-gray-800 border border-gray-200 dark:bg-gray-900/20 dark:text-gray-300 dark:border-gray-800">Unknown</Badge>;
+    }
   };
 
   const getTypeBadge = (type: string) => {
