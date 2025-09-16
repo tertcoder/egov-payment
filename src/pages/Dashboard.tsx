@@ -1,9 +1,31 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Building2, Globe, CreditCard, Clock, TrendingUp, Users, DollarSign } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Dashboard = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const stats = [
     {
       title: "Total Banks",
@@ -97,10 +119,90 @@ const Dashboard = () => {
             Welcome back! Here's what's happening with your payments today.
           </p>
         </div>
-        <Button className="btn-gradient">
-          <DollarSign className="w-4 h-4 mr-2" />
-          New Transaction
-        </Button>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button className="btn-gradient">
+              <DollarSign className="w-4 h-4 mr-2" />
+              New Transaction
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Create New Transaction</DialogTitle>
+              <DialogDescription>
+                Initiate a new payment transaction. Fill in all required information.
+              </DialogDescription>
+            </DialogHeader>
+            <form className="space-y-4 pt-4">
+              <div className="space-y-2">
+                <Label htmlFor="clientCode">Client Code</Label>
+                <Input id="clientCode" placeholder="Enter client code (e.g., CLI-001)" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="bankSelect">Bank</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a bank" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-surface">
+                    <SelectItem value="brb">Bank of the Republic of Burundi</SelectItem>
+                    <SelectItem value="bcb">Banque Commerciale du Burundi</SelectItem>
+                    <SelectItem value="ecobank">Ecobank Burundi</SelectItem>
+                    <SelectItem value="crdb">CRDB Bank Burundi</SelectItem>
+                    <SelectItem value="interbank">Interbank Burundi</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="platformSelect">Platform</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a platform" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-surface">
+                    <SelectItem value="finance">Ministry of Finance</SelectItem>
+                    <SelectItem value="education">Education Portal</SelectItem>
+                    <SelectItem value="health">Ministry of Health</SelectItem>
+                    <SelectItem value="tax">Tax Authority</SelectItem>
+                    <SelectItem value="municipal">Bujumbura Municipal Services</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="amount">Amount (USD)</Label>
+                <Input
+                  id="amount"
+                  type="number"
+                  step="0.01"
+                  placeholder="Enter amount in USD"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lookupData">Lookup Data</Label>
+                <Input id="lookupData" placeholder="Enter lookup reference (e.g., TAX-2024-001)" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="description">Description</Label>
+                <Textarea
+                  id="description"
+                  placeholder="Enter transaction description"
+                  rows={3}
+                />
+              </div>
+              <div className="flex justify-end space-x-2 pt-4">
+                <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                  Cancel
+                </Button>
+                <Button
+                  className="btn-gradient"
+                  onClick={() => setIsDialogOpen(false)}
+                >
+                  Create Transaction
+                </Button>
+              </div>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* Stats Grid */}
@@ -166,8 +268,10 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
-            <Button variant="outline" className="w-full mt-4">
-              View All Transactions
+            <Button asChild variant="outline" className="w-full mt-4">
+              <Link to="/dashboard/transactions">
+                View All Transactions
+              </Link>
             </Button>
           </CardContent>
         </Card>

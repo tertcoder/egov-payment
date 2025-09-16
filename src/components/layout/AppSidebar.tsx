@@ -20,11 +20,11 @@ import {
 
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: BarChart3 },
-  { name: "Banks", href: "/banks", icon: Building2 },
-  { name: "Platforms", href: "/platforms", icon: Globe },
-  { name: "Transactions", href: "/transactions", icon: CreditCard },
-  { name: "Settings", href: "/settings", icon: Settings },
+  { name: "Dashboard", href: "/dashboard", icon: BarChart3 },
+  { name: "Banks", href: "/dashboard/banks", icon: Building2 },
+  { name: "Platforms", href: "/dashboard/platforms", icon: Globe },
+  { name: "Transactions", href: "/dashboard/transactions", icon: CreditCard },
+  { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
 export function AppSidebar() {

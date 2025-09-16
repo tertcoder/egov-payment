@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Globe, Plus, Search, Edit, Trash2, Mail, Building, Users } from "lucide-react";
+import { Globe, Plus, Search, Edit, Trash2, Mail, Building, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,6 +30,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { usePagination } from "@/hooks/use-pagination";
 
 const Platforms = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -98,6 +99,20 @@ const Platforms = () => {
     platform.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const {
+    currentItems: paginatedPlatforms,
+    currentPage,
+    totalPages,
+    totalItems,
+    pageSize,
+    hasNextPage,
+    hasPreviousPage,
+    goToPage,
+    goToNextPage,
+    goToPreviousPage,
+    setPageSize,
+  } = usePagination(filteredPlatforms, 5);
+
   const getStatusBadge = (status: string) => {
     return status === "active"
       ? <Badge className="badge-success">Active</Badge>
@@ -164,6 +179,24 @@ const Platforms = () => {
                   id="description"
                   placeholder="Enter platform description"
                   rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="serverIp">Server IP Address</Label>
+                <Input
+                  id="serverIp"
+                  placeholder="Enter server IP address (e.g., 192.168.1.100)"
+                  pattern="^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="callbackUrl">Callback URL</Label>
+                <Input
+                  id="callbackUrl"
+                  type="url"
+                  placeholder="Enter callback URL (e.g., https://platform.gov.bi/callback)"
                 />
               </div>
               <div className="flex justify-end space-x-2 pt-4">
@@ -240,7 +273,7 @@ const Platforms = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredPlatforms.map((platform) => (
+                {paginatedPlatforms.map((platform) => (
                   <TableRow key={platform.id} className="hover:bg-surface-muted/50">
                     <TableCell>
                       <div className="space-y-1">
@@ -302,6 +335,82 @@ const Platforms = () => {
             <div className="text-center py-8">
               <Globe className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
               <p className="text-muted-foreground">No platforms found matching your search.</p>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalItems > 0 && (
+            <div className="flex items-center justify-between px-2 py-4">
+              <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2">
+                  <p>Rows per page:</p>
+                  <Select
+                    value={`${pageSize}`}
+                    onValueChange={(value) => setPageSize(Number(value))}
+                  >
+                    <SelectTrigger className="h-8 w-[70px]">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent side="top" className="bg-surface">
+                      {[5, 10, 20, 30, 40, 50].map((size) => (
+                        <SelectItem key={size} value={`${size}`}>
+                          {size}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  {totalItems === 0 ? "0" : (currentPage - 1) * pageSize + 1}-{Math.min(currentPage * pageSize, totalItems)} of {totalItems}
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={goToPreviousPage}
+                  disabled={!hasPreviousPage}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  <span className="sr-only">Go to previous page</span>
+                </Button>
+                <div className="flex items-center space-x-1">
+                  {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                    let pageNumber;
+                    if (totalPages <= 5) {
+                      pageNumber = i + 1;
+                    } else {
+                      const start = Math.max(1, currentPage - 2);
+                      const end = Math.min(totalPages, start + 4);
+                      const adjustedStart = Math.max(1, end - 4);
+                      pageNumber = adjustedStart + i;
+                    }
+
+                    if (pageNumber > totalPages) return null;
+
+                    return (
+                      <Button
+                        key={pageNumber}
+                        variant={currentPage === pageNumber ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => goToPage(pageNumber)}
+                        className="h-8 w-8 p-0"
+                      >
+                        {pageNumber}
+                      </Button>
+                    );
+                  })}
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={goToNextPage}
+                  disabled={!hasNextPage}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                  <span className="sr-only">Go to next page</span>
+                </Button>
+              </div>
             </div>
           )}
         </CardContent>

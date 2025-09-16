@@ -12,6 +12,7 @@ import Platforms from "./pages/Platforms";
 import Transactions from "./pages/Transactions";
 import TransactionDetails from "./pages/TransactionDetails";
 import Settings from "./pages/Settings";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,19 +24,31 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <SidebarProvider>
-            <Routes>
-              <Route path="/" element={<DashboardLayout />}>
-                <Route index element={<Dashboard />} />
-                <Route path="banks" element={<Banks />} />
-                <Route path="platforms" element={<Platforms />} />
-                <Route path="transactions" element={<Transactions />} />
-                <Route path="transactions/:id" element={<TransactionDetails />} />
-                <Route path="settings" element={<Settings />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </SidebarProvider>
+          <Routes>
+            {/* Default route - Login Page */}
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+
+            {/* Dashboard Routes - With Sidebar */}
+            <Route path="/dashboard/*" element={
+              <SidebarProvider>
+                <Routes>
+                  <Route path="/" element={<DashboardLayout />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="banks" element={<Banks />} />
+                    <Route path="platforms" element={<Platforms />} />
+                    <Route path="transactions" element={<Transactions />} />
+                    <Route path="transactions/:id" element={<TransactionDetails />} />
+                    <Route path="settings" element={<Settings />} />
+                  </Route>
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </SidebarProvider>
+            } />
+
+            {/* Catch-all for undefined routes */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
