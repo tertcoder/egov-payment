@@ -49,7 +49,7 @@ const Dashboard = () => {
       change: "+15% from yesterday",
       icon: CreditCard,
       color: "text-blue-600",
-      bgColor: "bg-blue-100",
+      bgColor: "bg-blue-100/10",
     },
     {
       title: "Pending Transactions",
@@ -298,7 +298,7 @@ const Dashboard = () => {
                   <p className="text-sm font-medium text-foreground">Payment Gateway</p>
                   <p className="text-xs text-muted-foreground">All systems operational</p>
                 </div>
-                <Badge className="badge-success">Online</Badge>
+                <Badge className="bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800">Online</Badge>
               </div>
 
               <div className="flex items-center justify-between p-3 rounded-lg bg-surface-muted border border-border-muted">
@@ -306,7 +306,7 @@ const Dashboard = () => {
                   <p className="text-sm font-medium text-foreground">Bank Connections</p>
                   <p className="text-xs text-muted-foreground">23/24 banks connected</p>
                 </div>
-                <Badge className="badge-warning">Partial</Badge>
+                <Badge className="bg-yellow-100 text-yellow-800 border border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800">Partial</Badge>
               </div>
 
               <div className="flex items-center justify-between p-3 rounded-lg bg-surface-muted border border-border-muted">
@@ -314,7 +314,7 @@ const Dashboard = () => {
                   <p className="text-sm font-medium text-foreground">API Services</p>
                   <p className="text-xs text-muted-foreground">Response time: 120ms</p>
                 </div>
-                <Badge className="badge-success">Healthy</Badge>
+                <Badge className="bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800">Healthy</Badge>
               </div>
 
               <div className="flex items-center justify-between p-3 rounded-lg bg-surface-muted border border-border-muted">
@@ -322,7 +322,7 @@ const Dashboard = () => {
                   <p className="text-sm font-medium text-foreground">Database</p>
                   <p className="text-xs text-muted-foreground">99.9% uptime</p>
                 </div>
-                <Badge className="badge-success">Online</Badge>
+                <Badge className="bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800">Online</Badge>
               </div>
             </div>
           </CardContent>

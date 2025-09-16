@@ -12,23 +12,23 @@ const TransactionDetails = () => {
   const transaction = {
     id: id || "TXN-2024-001",
     clientCode: "CLI-001",
-    bank: "Bank of Ethiopia",
+    bank: "Bank of the Republic of Burundi",
     platform: "Ministry of Finance",
     amount: 2450.00,
     date: "2024-03-15T14:30:00",
     status: "pending",
     lookupData: "TAX-2024-Q1-001",
     description: "Quarterly tax payment for business license renewal",
-    bankReference: "BET-2024-003456",
+    bankReference: "BRB-2024-003456",
     platformReference: "MOF-TAX-789012",
     processingFee: 24.50,
     netAmount: 2425.50,
-    initiatedBy: "Bon Tertius Tuyishimire",
+    initiatedBy: "Jean-Claude Nduwimana",
     clientDetails: {
-      name: "ABC Trading Company",
-      email: "finance@abctrading.com",
-      phone: "+251-11-123-4567",
-      address: "Addis Ababa, Ethiopia",
+      name: "Burundi Trade Solutions",
+      email: "finance@burunditrade.bi",
+      phone: "+257-22-123-4567",
+      address: "Bujumbura, Burundi",
     },
     timeline: [
       {
@@ -67,15 +67,19 @@ const TransactionDetails = () => {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "completed":
-        return <Badge className="badge-success">Completed</Badge>;
+        return <Badge className="bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800">Completed</Badge>;
       case "pending":
-        return <Badge className="badge-warning">Pending</Badge>;
+        return <Badge className="bg-yellow-100 text-yellow-800 border border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800">Pending</Badge>;
       case "processing":
-        return <Badge className="bg-blue-100 text-blue-700 border border-blue-200">Processing</Badge>;
+        return <Badge className="bg-blue-100 text-blue-800 border border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800">Processing</Badge>;
       case "failed":
-        return <Badge className="badge-danger">Failed</Badge>;
+        return <Badge className="bg-red-100 text-red-800 border border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800">Failed</Badge>;
+      case "cancelled":
+        return <Badge className="bg-orange-100 text-orange-800 border border-orange-200 dark:bg-orange-900/20 dark:text-orange-300 dark:border-orange-800">Cancelled</Badge>;
+      case "refunded":
+        return <Badge className="bg-purple-100 text-purple-800 border border-purple-200 dark:bg-purple-900/20 dark:text-purple-300 dark:border-purple-800">Refunded</Badge>;
       default:
-        return <Badge className="badge-neutral">Unknown</Badge>;
+        return <Badge className="bg-gray-100 text-gray-800 border border-gray-200 dark:bg-gray-900/20 dark:text-gray-300 dark:border-gray-800">Unknown</Badge>;
     }
   };
 
@@ -89,7 +93,7 @@ const TransactionDetails = () => {
       {/* Header */}
       <div className="flex items-center space-x-4">
         <Button asChild variant="ghost" size="sm">
-          <Link to="/transactions">
+          <Link to="/dashboard/transactions">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Transactions
           </Link>

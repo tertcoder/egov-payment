@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CreditCard, Search, Filter, Download, Eye, Calendar, DollarSign, ChevronLeft, ChevronRight } from "lucide-react";
+import { CreditCard, Search, Filter, Download, Eye, Calendar, DollarSign, ChevronLeft, ChevronRight, CheckCircle, Clock } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -229,9 +229,7 @@ const Transactions = () => {
                   {demoTransactions.filter(t => t.status === 'completed').length}
                 </p>
               </div>
-              <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-secondary rounded-full"></div>
-              </div>
+              <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
@@ -245,9 +243,7 @@ const Transactions = () => {
                   {demoTransactions.filter(t => t.status === 'pending').length}
                 </p>
               </div>
-              <div className="w-8 h-8 bg-warning/10 rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-warning rounded-full"></div>
-              </div>
+              <Clock className="w-8 h-8 text-yellow-600" />
             </div>
           </CardContent>
         </Card>
